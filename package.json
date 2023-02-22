@@ -7,6 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc"
   },
-  "author": "",
-  "license": "ISC"
+  "author": "Darshit Mehta <darshit.mehta@kevit.io>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kevit-io/mask"
+  },
+  "license": "GPL-3"
 }
