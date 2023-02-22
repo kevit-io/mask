@@ -1,0 +1,1 @@
+export { getUpdateLogData } from './helper/mask.helper';
