@@ -12,5 +12,8 @@
     "type": "git",
     "url": "https://github.com/kevit-io/mask"
   },
-  "license": "GPL-3"
+  "license": "GPL-3",
+  "devDependencies": {
+    "typescript": "4.9.5"
+  }
 }
