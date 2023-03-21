@@ -19,9 +19,12 @@ Example with JSON data:
 const data = {
     "name": "John Doe",
     "email": "abc@xyc.com",
-    "mobile": "1234567890",
+    "mobile": "9824416908",
     "aadhar": "123456789012",
     "dob": "01/01/1990",
+    "pancard": "ABBPG6789L",
+    "passportNumber": "A2190457",
+    "pincode": "360001",
 }
 
 const result = getUpdateLogData(data);
@@ -31,9 +34,12 @@ console.log(result)
 * {
 *  name: 'John Doe',
 *  email: 'XXXXXX@XXX.XX',
-*  mobile: '1XXX67890',
+*  mobile: '9824XXXX08',
 *  aadhar: 'XXXXXXXX9012',
-*  dob: 'XX/XX/XXXX'
+*  dob: 'XX/XX/XXXX',
+*  pancard: 'AXXXXXXXXL',
+*  passportNumber: 'A2XXX57',
+*  pincode: '3XXX1'
 * }
 */
 ```
@@ -44,9 +50,12 @@ import { getUpdateLogData } from '@kevit/mask';
 const data = ` This is a multi line string containing following values:
     name: John Doe  
     email: abc@xyc.com
-    mobile: 1234567890
+    mobile: 9824416908
     aadhar: 123456789012
     dob: 01/01/1990
+    pancard: ABBPG6789L
+    passportNumber: A2190457
+    pincode: 360001
 `
 
 const result = getUpdateLogData(data);
@@ -57,8 +66,11 @@ console.log(result)
  *  This is a multi line string containing following values:
     name: John Doe  
     email: XXXXXX@XXX.XX
-    mobile: 1XXX67890
+    mobile: 9824XXXX08
     aadhar: XXXXXXXX9012
     dob: XX/XX/XXXX
+    pancard: 'AXXXXXXXXL',
+    passportNumber: 'A2XXX57',
+    pincode: '3XXX1'
  */
 ```

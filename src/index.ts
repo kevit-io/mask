@@ -1,1 +1,10 @@
-export { getUpdateLogData } from './helper/mask.helper';
+export {
+    getUpdateLogData,
+    updateMaskedAdharaCardNumber,
+    updateMaskedDob,
+    updateMaskedEmailId,
+    updateMaskedMobileNumber,
+    updateMaskedPanCard,
+    updateMaskedPassportNumber,
+    updateMaskedPinCode,
+} from "./helper/mask.helper";
