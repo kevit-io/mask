@@ -19,7 +19,7 @@ Example with JSON data:
 const data = {
     "name": "John Doe",
     "email": "abc@xyc.com",
-    "mobile": "9824416908",
+    "mobile": "9833316908",
     "aadhar": "123456789012",
     "dob": "01/01/1990",
     "pancard": "ABBPG6789L",
@@ -34,7 +34,7 @@ console.log(result)
 * {
 *  name: 'John Doe',
 *  email: 'XXXXXX@XXX.XX',
-*  mobile: '9824XXXX08',
+*  mobile: '9833XXXX08',
 *  aadhar: 'XXXXXXXX9012',
 *  dob: 'XX/XX/XXXX',
 *  pancard: 'AXXXXXXXXL',
@@ -50,7 +50,7 @@ import { getUpdateLogData } from '@kevit/mask';
 const data = ` This is a multi line string containing following values:
     name: John Doe  
     email: abc@xyc.com
-    mobile: 9824416908
+    mobile: 9833316908
     aadhar: 123456789012
     dob: 01/01/1990
     pancard: ABBPG6789L
@@ -66,7 +66,7 @@ console.log(result)
  *  This is a multi line string containing following values:
     name: John Doe  
     email: XXXXXX@XXX.XX
-    mobile: 9824XXXX08
+    mobile: 9833XXXX08
     aadhar: XXXXXXXX9012
     dob: XX/XX/XXXX
     pancard: 'AXXXXXXXXL',
