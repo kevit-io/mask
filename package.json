@@ -1,6 +1,6 @@
 {
   "name": "@kevit/mask",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "private": false,
   "description": "Masking helpers for Sensitive data",
   "main": "lib/index.js",
@@ -13,6 +13,11 @@
     "type": "git",
     "url": "https://github.com/kevit-io/mask"
   },
+  "keywords": [
+    "data-mask",
+    "mask",
+    "masking"
+  ],
   "license": "GPL-3",
   "devDependencies": {
     "typescript": "^4.9.5"

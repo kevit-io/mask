@@ -74,3 +74,16 @@ console.log(result)
     pincode: '3XXX1'
  */
 ```
+
+## The functions we are providing ##
+
+| Function Name | Description |
+|---|---|
+| updateMaskedAdharaCardNumber | This function will mask the aadhaar card number details|
+| updateMaskedDob | This function will mask the date of birth of the user|
+| updateMaskedEmailId | This function will mask the email address of the user|
+| updateMaskedMobileNumber | This function will mask the mobile number of the user|
+| updateMaskedPanCard | This function will mask the pan card number|
+| updateMaskedPassportNumber | This function will mask the passport number of the user|
+| updateMaskedPinCode | This function will mask the pin code of the user|
+| getUpdateLogData | This function will mask all the details of the user that we mention in the above table|
