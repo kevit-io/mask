@@ -1,6 +1,6 @@
 {
   "name": "@kevit/mask",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "private": false,
   "description": "Masking helpers for Sensitive data",
   "main": "lib/index.js",

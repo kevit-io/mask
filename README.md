@@ -25,6 +25,14 @@ const data = {
     "pancard": "ABBPG6789L",
     "passportNumber": "A2190457",
     "pincode": "360001",
+    "ssn": "123-45-6789",
+    "creditCard": "1234-5678-9876-5432",
+    "driversLicense": "A1234567",
+    "bankAccount": "1234567890123456",
+    "iban": "GB82WEST12345698765432",
+    "tin": "987-65-4321",
+    "healthInsuranceNumber": "H123456789",
+    "employeeId": "EMP12345"
 }
 
 const result = getUpdateLogData(data);
@@ -39,7 +47,15 @@ console.log(result)
 *  dob: 'XX/XX/XXXX',
 *  pancard: 'AXXXXXXXXL',
 *  passportNumber: 'A2XXX57',
-*  pincode: '3XXX1'
+*  pincode: '3XXX1',
+*  ssn: 'XXX-XX-XXXX',
+*  creditCard: '1234-XXXX-XXXX-5432',
+*  driversLicense: 'AXXXXXXX',
+*  bankAccount: '123XXXXXXXXX3456',
+*  iban: 'GB82XXXXXXXXXXXXXX65432',
+*  tin: 'XXX-XX-XXXX',
+*  healthInsuranceNumber: 'HXXXXXXXXX',
+*  employeeId: 'EMPXXXXX'
 * }
 */
 ```
@@ -47,7 +63,7 @@ console.log(result)
 Example with String Data: 
 ```ts
 import { getUpdateLogData } from '@kevit/mask';
-const data = ` This is a multi line string containing following values:
+const data = `This is a multi-line string containing the following values:
     name: John Doe  
     email: abc@xyc.com
     mobile: 9833316908
@@ -56,6 +72,14 @@ const data = ` This is a multi line string containing following values:
     pancard: ABBPG6789L
     passportNumber: A2190457
     pincode: 360001
+    ssn: 123-45-6789
+    creditCard: 1234-5678-9876-5432
+    driversLicense: A1234567
+    bankAccount: 1234567890123456
+    iban: GB82WEST12345698765432
+    tin: 987-65-4321
+    healthInsuranceNumber: H123456789
+    employeeId: EMP12345
 `
 
 const result = getUpdateLogData(data);
@@ -63,15 +87,23 @@ console.log(result)
 
 /**
  * Output:
- *  This is a multi line string containing following values:
-    name: John Doe  
-    email: XXXXXX@XXX.XX
-    mobile: 9833XXXX08
-    aadhar: XXXXXXXX9012
-    dob: XX/XX/XXXX
-    pancard: 'AXXXXXXXXL',
-    passportNumber: 'A2XXX57',
-    pincode: '3XXX1'
+ *  This is a multi-line string containing the following values:
+ *  name: John Doe  
+ *  email: XXXXXX@XXX.XX
+ *  mobile: 9833XXXX08
+ *  aadhar: XXXXXXXX9012
+ *  dob: XX/XX/XXXX
+ *  pancard: AXXXXXXX9L
+ *  passportNumber: A2XXX57
+ *  pincode: 3XXX1
+ *  ssn: XXX-XX-XXXX
+ *  creditCard: 1234-XXXX-XXXX-5432
+ *  driversLicense: AXXXXXXX
+ *  bankAccount: 123XXXXXXXXX3456
+ *  iban: GB82XXXXXXXXXXXXXX65432
+ *  tin: XXX-XX-XXXX
+ *  healthInsuranceNumber: HXXXXXXXXX
+ *  employeeId: EMPXXXXX
  */
 ```
 
@@ -79,11 +111,19 @@ console.log(result)
 
 | Function Name | Description |
 |---|---|
-| updateMaskedAdharaCardNumber | This function will mask the aadhaar card number details|
-| updateMaskedDob | This function will mask the date of birth of the user|
-| updateMaskedEmailId | This function will mask the email address of the user|
-| updateMaskedMobileNumber | This function will mask the mobile number of the user|
-| updateMaskedPanCard | This function will mask the pan card number|
-| updateMaskedPassportNumber | This function will mask the passport number of the user|
-| updateMaskedPinCode | This function will mask the pin code of the user|
-| getUpdateLogData | This function will mask all the details of the user that we mention in the above table|
+| updateMaskedAdharaCardNumber | This function will mask the Aadhaar card number details |
+| updateMaskedDob | This function will mask the date of birth of the user |
+| updateMaskedEmailId | This function will mask the email address of the user |
+| updateMaskedMobileNumber | This function will mask the mobile number of the user |
+| updateMaskedPanCard | This function will mask the PAN card number |
+| updateMaskedPassportNumber | This function will mask the passport number of the user |
+| updateMaskedPinCode | This function will mask the pin code of the user |
+| updateMaskedSSN | This function will mask Social Security Numbers (SSN) |
+| updateMaskedCreditCard | This function will mask Credit Card Numbers |
+| updateMaskedDriversLicense | This function will mask Driver's License Numbers |
+| updateMaskedBankAccount | This function will mask Bank Account Numbers |
+| updateMaskedIBAN | This function will mask International Bank Account Numbers (IBAN) |
+| updateMaskedTIN | This function will mask Tax Identification Numbers (TIN) |
+| updateMaskedHealthInsuranceNumber | This function will mask Health Insurance Numbers |
+| updateMaskedEmployeeID | This function will mask Employee IDs |
+| getUpdateLogData | This function will mask all the details of the user mentioned in the above table |
