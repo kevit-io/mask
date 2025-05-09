@@ -530,9 +530,167 @@ export const updateMaskedURL = (data: any) => {
 };
 
 /**
+ * Masks the MAC address in the given data.
+ * For object data, it converts it to a JSON string and replaces any MAC address
+ * that matches the pattern ([0-9A-Fa-f]{2}:){5}[0-9A-Fa-f]{2} with the last two
+ * characters replaced by 'XX'.
+ * For string data, it directly replaces any MAC address that matches the pattern.
+ * @param data - The input data, which can be either an object or a string.
+ * @returns The data with MAC addresses masked.
+ */
+export const updateMaskedMACAddress = (data: any) => {
+    const type = typeof data;
+    switch (type) {
+        case 'object':
+            data = JSON.stringify(data);
+            data = data.replace(/([0-9A-Fa-f]{2}:){5}[0-9A-Fa-f]{2}/g, (match: string) => match.slice(0, -2) + 'XX');
+            return JSON.parse(data);
+        case 'string':
+            return data.replace(/([0-9A-Fa-f]{2}:){5}[0-9A-Fa-f]{2}/g, (match: string) => match.slice(0, -2) + 'XX');
+        default:
+            return data;
+    }
+};
+
+/**
+ * Masks the geo-coordinates in the given data.
+ * For object data, it converts it to a JSON string and replaces any geo-coordinates
+ * that match the pattern (-?\d+\.\d{2})\d+ with '$1****'.
+ * For string data, it directly replaces any geo-coordinates that match the pattern.
+ * @param data - The input data, which can be either an object or a string.
+ * @returns The data with geo-coordinates masked.
+ */
+export const updateMaskedGeoCoordinates = (data: any) => {
+    const type = typeof data;
+    switch (type) {
+        case 'object':
+            data = JSON.stringify(data);
+            data = data.replace(/(-?\d+\.\d{2})\d+/g, '$1****');
+            return JSON.parse(data);
+        case 'string':
+            return data.replace(/(-?\d+\.\d{2})\d+/g, '$1****');
+        default:
+            return data;
+    }
+};
+
+/**
+ * Masks the username in the given data.
+ * For object data, it converts it to a JSON string and replaces any username
+ * that matches the pattern \b(\w)(\w+)(\w)\b with '$1*******$3'.
+ * For string data, it directly replaces any username that matches the pattern.
+ * @param data - The input data, which can be either an object or a string.
+ * @returns The data with usernames masked.
+ */
+export const updateMaskedUsername = (data: any) => {
+    const type = typeof data;
+    switch (type) {
+        case 'object':
+            data = JSON.stringify(data);
+            data = data.replace(/\b(\w)(\w+)(\w)\b/g, '$1*******$3');
+            return JSON.parse(data);
+        case 'string':
+            return data.replace(/\b(\w)(\w+)(\w)\b/g, '$1*******$3');
+        default:
+            return data;
+    }
+};
+
+/**
+ * Masks custom patterns in the given data.
+ * For object data, it converts it to a JSON string and replaces any matches
+ * of the provided pattern with the replacement string.
+ * For string data, it directly replaces any matches of the provided pattern.
+ * @param data - The input data, which can be either an object or a string.
+ * @param pattern - The regular expression pattern to match.
+ * @param replacement - The replacement string for the matched pattern.
+ * @returns The data with custom patterns masked.
+ */
+export const updateMaskedCustom = (data: any, pattern: RegExp, replacement: string) => {
+    const type = typeof data;
+    switch (type) {
+        case 'object':
+            data = JSON.stringify(data);
+            data = data.replace(pattern, replacement);
+            return JSON.parse(data);
+        case 'string':
+            return data.replace(pattern, replacement);
+        default:
+            return data;
+    }
+};
+
+/**
+ * Masks the social media handle in the given data.
+ * For object data, it converts it to a JSON string and replaces any social media handle
+ * that matches the pattern @\w+ with '@******'.
+ * For string data, it directly replaces any social media handle that matches the pattern.
+ * @param data - The input data, which can be either an object or a string.
+ * @returns The data with social media handles masked.
+ */
+export const updateMaskedSocialMediaHandle = (data: any) => {
+    const type = typeof data;
+    switch (type) {
+        case 'object':
+            data = JSON.stringify(data);
+            data = data.replace(/@\w+/g, '@******');
+            return JSON.parse(data);
+        case 'string':
+            return data.replace(/@\w+/g, '@******');
+        default:
+            return data;
+    }
+};
+
+
+/**
+ * Masks file paths in the given data.
+ * For object data, it converts it to a JSON string and replaces any file paths
+ * that match the pattern /[^/]+/ with '***'.
+ * For string data, it directly replaces any file paths that match the pattern.
+ * @param data - The input data, which can be either an object or a string.
+ * @returns The data with file paths masked.
+ */
+export const updateMaskedFilePath = (data: any) => {
+    const type = typeof data;
+    switch (type) {
+        case 'object':
+            data = JSON.stringify(data);
+            data = data.replace(/\/([^\/]+)\//g, '/***/');
+            return JSON.parse(data);
+        case 'string':
+            return data.replace(/\/([^\/]+)\//g, '/***/');
+        default:
+            return data;
+    }
+};
+
+/**
+ * Masks timestamps in the given data.
+ * For object data, it converts it to a JSON string and replaces any timestamps
+ * that match the pattern T\d{2}:\d{2}:\d{2} with 'T**:**:**'.
+ * For string data, it directly replaces any timestamps that match the pattern.
+ * @param data - The input data, which can be either an object or a string.
+ * @returns The data with timestamps masked.
+ */
+export const updateMaskedTimestamp = (data: any) => {
+    const type = typeof data;
+    switch (type) {
+        case 'object':
+            data = JSON.stringify(data);
+            data = data.replace(/T\d{2}:\d{2}:\d{2}/g, 'T**:**:**');
+            return JSON.parse(data);
+        case 'string':
+            return data.replace(/T\d{2}:\d{2}:\d{2}/g, 'T**:**:**');
+        default:
+            return data;
+    }
+};
+
+/**
  * Masks sensitive information within the provided data, including Aadhaar card number,
  * mobile number, email address, PAN card number, date of birth, pin code, passport number,
- * IP address, and URL query parameters. The input data can be either an object or a string.
+ * IP address, URL query parameters, MAC address, geo-coordinates, and username. The input data can be either an object or a string.
  * 
  * For object data, it will be converted to a JSON string, processed for masking,
  * and then converted back to an object.
@@ -567,6 +725,12 @@ export const getUpdateLogData = (data: any | string): any | string | void => {
                 data = updateMaskedHealthInsuranceNumber(data);
                 data = updateMaskedEmployeeID(data);
                 data = updateMaskedURL(data);
+                data = updateMaskedMACAddress(data);
+                data = updateMaskedGeoCoordinates(data);
+                data = updateMaskedUsername(data);
+                data = updateMaskedSocialMediaHandle(data);
+                data = updateMaskedFilePath(data);
+                data = updateMaskedTimestamp(data);
                 return JSON.parse(data);
             }
             break;
@@ -588,9 +752,14 @@ export const getUpdateLogData = (data: any | string): any | string | void => {
             data = updateMaskedHealthInsuranceNumber(data);
             data = updateMaskedEmployeeID(data);
             data = updateMaskedURL(data);
+            data = updateMaskedMACAddress(data);
+            data = updateMaskedGeoCoordinates(data);
+            data = updateMaskedUsername(data);
+            data = updateMaskedSocialMediaHandle(data);
+            data = updateMaskedFilePath(data);
+            data = updateMaskedTimestamp(data);
             return data;
         default:
             return data;
     }
 }
-
