@@ -486,9 +486,53 @@ export const updateMaskedPinCode = (data: any) => {
 }
 
 /**
+ * Masks the IP address in the given data.
+ * For object data, it converts it to a JSON string and replaces any IP address
+ * that matches the pattern \b(\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})\b with '$1.***.***.$4'.
+ * For string data, it directly replaces any IP address that matches the pattern.
+ * @param data - The input data, which can be either an object or a string.
+ * @returns The data with IP addresses masked.
+ */
+export const updateMaskedIPAddress = (data: any) => {
+    const type = typeof data;
+    switch (type) {
+        case 'object':
+            data = JSON.stringify(data);
+            data = data.replace(/\b(\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})\b/g, '$1.***.***.$4');
+            return JSON.parse(data);
+        case 'string':
+            return data.replace(/\b(\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})\b/g, '$1.***.***.$4');
+        default:
+            return data;
+    }
+};
+
+/**
+ * Masks the URL query parameters in the given data.
+ * For object data, it converts it to a JSON string and replaces any query parameters
+ * that match the pattern (\?|&)([^=]+)=([^&]+) with '$1$2=***'.
+ * For string data, it directly replaces any query parameters that match the pattern.
+ * @param data - The input data, which can be either an object or a string.
+ * @returns The data with query parameters masked.
+ */
+export const updateMaskedURL = (data: any) => {
+    const type = typeof data;
+    switch (type) {
+        case 'object':
+            data = JSON.stringify(data);
+            data = data.replace(/(\?|&)([^=]+)=([^&]+)/g, '$1$2=***');
+            return JSON.parse(data);
+        case 'string':
+            return data.replace(/(\?|&)([^=]+)=([^&]+)/g, '$1$2=***');
+        default:
+            return data;
+    }
+};
+
+/**
  * Masks sensitive information within the provided data, including Aadhaar card number,
- * mobile number, email address, PAN card number, date of birth, pin code, and passport number.
- * The input data can be either an object or a string.
+ * mobile number, email address, PAN card number, date of birth, pin code, passport number,
+ * IP address, and URL query parameters. The input data can be either an object or a string.
  * 
  * For object data, it will be converted to a JSON string, processed for masking,
  * and then converted back to an object.
@@ -513,6 +557,7 @@ export const getUpdateLogData = (data: any | string): any | string | void => {
                 data = updateMaskedDob(data)
                 data = updateMaskedPinCode(data)
                 data = updateMaskedPassportNumber(data)
+                data = updateMaskedIPAddress(data);
                 data = updateMaskedSSN(data);
                 data = updateMaskedCreditCard(data);
                 data = updateMaskedDriversLicense(data);
@@ -521,6 +566,7 @@ export const getUpdateLogData = (data: any | string): any | string | void => {
                 data = updateMaskedTIN(data);
                 data = updateMaskedHealthInsuranceNumber(data);
                 data = updateMaskedEmployeeID(data);
+                data = updateMaskedURL(data);
                 return JSON.parse(data);
             }
             break;
@@ -532,6 +578,7 @@ export const getUpdateLogData = (data: any | string): any | string | void => {
             data = updateMaskedDob(data)
             data = updateMaskedPinCode(data)
             data = updateMaskedPassportNumber(data)
+            data = updateMaskedIPAddress(data);
             data = updateMaskedSSN(data);
             data = updateMaskedCreditCard(data);
             data = updateMaskedDriversLicense(data);
@@ -540,6 +587,7 @@ export const getUpdateLogData = (data: any | string): any | string | void => {
             data = updateMaskedTIN(data);
             data = updateMaskedHealthInsuranceNumber(data);
             data = updateMaskedEmployeeID(data);
+            data = updateMaskedURL(data);
             return data;
         default:
             return data;
